@@ -11,3 +11,17 @@ Create an alias on the local machine 'ssha' as follows:
 ```
 alias ssha='eval $(ssh-agent) && ssh-add'
 ```
+
+To set up `ansible`:
+1. Install ansible - `sudo zypper install ansible`
+2. Create `inventory` file of ansible hosts
+3. Run a command against these hosts:
+   `ansible all --key-file ~/.ssh/id_ed25519_ansible -i inventory -m ping`
+4. Simplify this by creating an `ansible.cfg` configuration file to specify the
+   inventory file and the ssh key, then
+   `ansible all -m ping`
+5. List all ansible hosts
+   `ansible all --list-hosts`
+6. Check out all configuration
+   `ansible all -m gather_facts`
+
